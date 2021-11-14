@@ -1,27 +1,2 @@
 <h1>ブログ編集画面</h1>
-<% if @blog.errors.any? %>
-  <div class="error-explanation">
-    <h2><%= @blog.errors.count%>件のエラーがあります。</h2>
-    <ul>
-      <% @blog.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end%>
-    </ul>
-  </div>
-<% end %>
-<div class="container">
-  <div class="blog_content md-4">
-    <%= form_with(model:@blog, local: true ) do |form| %>
-      <div class="blog_label form-group">
-        <%= form.label :title %>
-          <%= form.text_field :title ,class: 'form-control'%>
-      </div>
-      <div class="blog_content form-group">
-        <%= form.label :content %>
-        <%= form.text_field :content ,class: 'form-control' %>
-      </div>
-      <%= form.submit %>
-    <% end %>
-    <%= link_to "ブログ一覧画面へ", blogs_path ,class: 'btn btn-secondary'%>
-  </div>
-</div>
+<%= render 'form' %>
