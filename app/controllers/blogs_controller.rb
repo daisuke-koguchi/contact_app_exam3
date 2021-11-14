@@ -10,14 +10,14 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      redirect_to blogs_path
+      redirect_to blogs_path, notice: "ブログ「#{@blog.title}」を作成しました"
     else
       render :new
-      binding.pry
     end
   end
 
   def show
+    
   end
 
   def edit
