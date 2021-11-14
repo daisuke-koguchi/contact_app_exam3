@@ -21,6 +21,19 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to blogs_path, notice: "ブログ「#{@blog.title}」を更新しました"
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
   end
 
   private
