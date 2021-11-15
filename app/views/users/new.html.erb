@@ -1,5 +1,14 @@
-
 <div class="container">
+  <% if @user.errors.any? %>
+    <div class="error_explanation">
+      <h2><%=@user.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>  
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <h1>Sign Up</h1>
   <div class="user_content">
     <%= form_with(model:@user ,local: true) do |form| %>
@@ -19,6 +28,7 @@
       <%= form.label :password_confirmation %>
       <%= form.password_field :password_confirmation ,class: 'form-control form-control-lg' %>
     </div>
+    <%= form.submit %>
 <% end %>
   </div>
 </div>
