@@ -15,6 +15,7 @@ gem 'webpacker', '~> 4.0'
 
 #Backend
 gem 'jbuilder', '~> 2.7'
+gem 'bcrypt'
 
 #Application speed up tool
 gem 'turbolinks', '~> 5'
