@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Log in</h1>
+  <%= form_with(scoop: :sessions, local: true) do |form| %>
+    <div class="email_content form-group">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: 'form-control form-control-lg' %>
+    </div>
+    <div class="password_content form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: 'form-control form-control-lg' %>
+    </div>
+      <%= form.submit "Log in"%>
+  <% end %>
+</div>
