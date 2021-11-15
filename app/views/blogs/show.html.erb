@@ -1,28 +1,34 @@
-<h1>ブログの詳細</h1>
-<table class="table" >
-  <tbody>
+<div class="container">
+  <h1>ブログの詳細</h1>
+  <table class="table" >
+    <tbody>
       <tr>
-      <th>ID</th>
-      <td><%= @blog.id %></td>
+        <th>ブログ作成者</th>
+        <td><%= @blog.user.name %></td>
       </tr>
-    <tr>
-      <th>title</th>
-      <td><%= @blog.title %></td>
-    </tr>
-        <tr>
-      <th>content</th>
-      <td><%= @blog.content %></td>
-    </tr>
-    <tr>
-      <th>作成日時</th>
-      <td><%= @blog.created_at %></td>
-    </tr>
-    <tr>
-      <th>更新日時</th>
-      <td><%= @blog.updated_at%></td>
-    </tr>
-  </tbody>
-</table>
-<%= link_to 'ブログ一覧画面へ', blogs_path, class: 'btn btn-primary' %>
-<%= link_to 'ブログ編集画面へ', edit_blog_path, class: 'btn btn-info' %>
-<%= link_to '削除', blog_path(@blog.id), method: :delete, class: 'btn btn-danger', data: {confirm: "本当に削除しますか？"}%>
+      <tr>
+        <th>ID</th>
+        <td><%= @blog.id %></td>
+        </tr>
+      <tr>
+        <th>title</th>
+        <td><%= @blog.title %></td>
+      </tr>
+          <tr>
+        <th>content</th>
+        <td><%= @blog.content %></td>
+      </tr>
+      <tr>
+        <th>作成日時</th>
+        <td><%= @blog.created_at %></td>
+      </tr>
+      <tr>
+        <th>更新日時</th>
+        <td><%= @blog.updated_at%></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to 'ブログ一覧画面へ', blogs_path, class: 'btn btn-primary' %>
+  <%= link_to 'ブログ編集画面へ', edit_blog_path, class: 'btn btn-info' %>
+  <%= link_to '削除', blog_path(@blog.id), method: :delete, class: 'btn btn-danger', data: {confirm: "本当に削除しますか？"}%>
+</div>
