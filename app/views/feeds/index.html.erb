@@ -1,0 +1,25 @@
+<div class="container">
+  <%= notice %>
+  <h1>写真登録</h1>
+  <%= link_to '新規登録', new_feed_path, class: 'btn btn-primary' %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>写真ファイル名</th>
+        <th>詳細</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @feeds.each do |feed| %>
+    <tr>
+      <td><%= feed.image %></td>
+      <td><%= link_to '詳細', feed ,class: 'btn btn-primary'%></td>
+      <td><%= link_to '編集', edit_feed_path(feed) ,class: 'btn btn-info'%></td>
+      <td><%= link_to '削除', feed, method: :delete,class: 'btn btn-danger', data: { confirm: "本当に削除しますか？" } %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
