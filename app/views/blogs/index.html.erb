@@ -1,6 +1,9 @@
 <div class="container">
   <%= flash[:notice] %>
   <h1>ブログ一覧画面</h1>
+  <p>下記のボタンを選択してブログの作成、詳細確認、編集、削除、写真投稿を行ってください！</p>
+  <p>ブログ作成者以外は編集、削除、写真登録できません!</p>
+  <p></p>
   <%= link_to "ブログ新規作成", new_blog_path ,class: 'btn btn-primary'%>
   <table class="table">
     <thead>
@@ -12,6 +15,7 @@
       <th>ブログ詳細</th>
       <th>ブログ編集</th>
       <th>ブログ削除</th>
+      <th>写真投稿</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +29,7 @@
     <% if blog.user_id == current_user.id %>
       <td><%= link_to '編集', edit_blog_path(blog.id), class: 'btn btn-info' , data: {confirm: "本当に編集しますか?"}%></td>
       <td><%= link_to '削除', blog_path(blog.id), method: :delete, class: 'btn btn-danger', data: {confirm: "本当に削除しますか？"}%></td>
+      <td><%= link_to '写真投稿', feeds_path, class: 'btn btn-success'%></td>
     <% end %>
     </tr>
     <% end %>

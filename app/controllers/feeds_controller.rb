@@ -1,28 +1,31 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: %i[ show edit update destroy ]
 
-  # GET /feeds or /feeds.json
   def index
     @feeds = Feed.all
   end
 
-  # GET /feeds/1 or /feeds/1.json
   def show
   end
 
-  # GET /feeds/new
   def new
+    if params[:back]
+    @feed = Feed.new(feed_params)
+    else
     @feed = Feed.new
+    end 
   end
 
-  # GET /feeds/1/edit
+  def confirm
+    @feed = Feed.new(feed_params)
+  end
+
   def edit
   end
 
-  # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)
-
+    @feed.user_id = current_user.id
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: "写真が登録されました。" }
@@ -34,7 +37,6 @@ class FeedsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /feeds/1 or /feeds/1.json
   def update
     respond_to do |format|
       if @feed.update(feed_params)

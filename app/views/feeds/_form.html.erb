@@ -9,10 +9,13 @@
       </ul>
     </div>
   <% end %>
+  <p>下記の「ファイルを選択」ボタンを押して写真を選択してください。</p>
+  <p>写真選択後に、「登録する」ボタンを押してください。</p>
   <div class="field">
-    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
     <%= form.label :image %>
+    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
     <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
   <div class="actions">
     <%= form.submit %>
