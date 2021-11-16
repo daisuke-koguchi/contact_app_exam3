@@ -15,16 +15,19 @@
     </tr>
     </thead>
     <tbody>
-      <% @blogs.each do |blog|%>
+    <% @blogs.each do |blog|%>
     <tr>
       <td><%= blog.user.name %></td>
       <td><%= blog.title %></td>
       <td><%= blog.content %></td>
       <td><%= blog.created_at%></td>
       <td><%= link_to '詳細', blog_path(blog.id), class: 'btn btn-primary' %></td>
+    <% if blog.user_id == current_user.id %>
       <td><%= link_to '編集', edit_blog_path(blog.id), class: 'btn btn-info' , data: {confirm: "本当に編集しますか?"}%></td>
       <td><%= link_to '削除', blog_path(blog.id), method: :delete, class: 'btn btn-danger', data: {confirm: "本当に削除しますか？"}%></td>
-      <% end %>
+    <% end %>
+    </tr>
+    <% end %>
     </tbody>
   </table>
 </div>
