@@ -1,6 +1,6 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: %i[ show edit update destroy ]
-
+  skip_before_action :login_required, only: [:index, :new, :create]
   # GET /feeds or /feeds.json
   def index
     @feeds = Feed.all
@@ -21,8 +21,9 @@ class FeedsController < ApplicationController
 
   # POST /feeds or /feeds.json
   def create
+    
     @feed = Feed.new(feed_params)
-
+    binding.pry
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: "Feed was successfully created." }
