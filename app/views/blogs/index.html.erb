@@ -1,7 +1,13 @@
 <div class="container">
   <%= flash[:notice] %>
   <h1>ブログ一覧画面</h1>
+  <div class="alert alert-info">
+    <p>「ブログ新規作成」ボタンを押してブログを投稿してください！</p>
+    <p>「ブログ詳細」、「ブログ編集」ボタンで詳細画面、編集画面へリンクします。「削除」ボタンで写真が削除されます。</p>
+    <p>「投稿写真を見る」ボタンでみんなの投稿写真が見れます！「写真登録」から写真を登録してください！</p>
+  </div>
   <%= link_to "ブログ新規作成", new_blog_path ,class: 'btn btn-primary'%>
+  <%= link_to '投稿写真を見る', feeds_path ,class: 'btn btn-warning'%>
   <table class="table">
     <thead>
     <tr>
@@ -12,6 +18,7 @@
       <th>ブログ詳細</th>
       <th>ブログ編集</th>
       <th>ブログ削除</th>
+      <th>写真投稿</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +32,7 @@
     <% if blog.user_id == current_user.id %>
       <td><%= link_to '編集', edit_blog_path(blog.id), class: 'btn btn-info' , data: {confirm: "本当に編集しますか?"}%></td>
       <td><%= link_to '削除', blog_path(blog.id), method: :delete, class: 'btn btn-danger', data: {confirm: "本当に削除しますか？"}%></td>
+      <td><%= link_to '写真投稿', feeds_path, class: 'btn btn-warning'%><td>
     <% end %>
     </tr>
     <% end %>

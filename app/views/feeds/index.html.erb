@@ -1,6 +1,10 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
-    <h1>写真登録</h1>
+    <h1>投稿写真</h1>
+    <div class="alert alert-info">
+      <p>「新規登録」ボタンを押して写真を投稿してください！</p>
+      <p>「詳細」、「変更」ボタンで詳細画面、変更画面へリンクします。「削除」ボタンで写真が削除されます。</p>
+    </div>
   <br>
   <%= link_to '新規登録', new_feed_path ,class:'btn btn-primary'%>
   <table class="table">
@@ -19,7 +23,7 @@
           <td><%= feed.user.name %></td>
           <td><%= feed.image %></td>
           <td><%= link_to '詳細', feed ,class: 'btn btn-info' %></td>
-        <% if feed.user_id = current_user.id%>
+        <% if feed.user_id == current_user.id%>
           <td><%= link_to '変更', edit_feed_path(feed), class: 'btn btn-success' %></td>
           <td><%= link_to '削除', feed, method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' } %></td>
         <% end %>
@@ -27,4 +31,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= link_to 'ブログ一覧へ', blogs_path, class:'btn btn-primary'%>
 </div>

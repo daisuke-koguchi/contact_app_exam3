@@ -6,24 +6,20 @@ class FeedsController < ApplicationController
     @feeds = Feed.all
   end
 
-  # GET /feeds/1 or /feeds/1.json
   def show
   end
 
-  # GET /feeds/new
   def new
     @feed = Feed.new
-    @feed.id =current_user.id 
+    #@feed.id = current_user.id
   end
 
-  # GET /feeds/1/edit
   def edit
   end
 
-  # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)
-    @feed.id = current_user.id
+    @feed.user_id = current_user.id
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: "写真が登録されました" }
@@ -35,7 +31,6 @@ class FeedsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /feeds/1 or /feeds/1.json
   def update
     respond_to do |format|
       if @feed.update(feed_params)
@@ -48,7 +43,6 @@ class FeedsController < ApplicationController
     end
   end
 
-  # DELETE /feeds/1 or /feeds/1.json
   def destroy
     @feed.destroy
     respond_to do |format|
@@ -58,12 +52,10 @@ class FeedsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_feed
       @feed = Feed.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def feed_params
       params.require(:feed).permit(:image, :image_cache)
     end
