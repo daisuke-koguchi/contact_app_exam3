@@ -1,5 +1,9 @@
-<h1>New Feed</h1>
+<div class="container"> 
+  <h1>写真登録</h1>
+  <%= render 'form', feed: @feed %>
+  <br>
+  <%= link_to '戻る', feeds_path, class: 'btn btn-primary' %>
+</div>
 
-<%= render 'form', feed: @feed %>
 
-<%= link_to 'Back', feeds_path %>
+

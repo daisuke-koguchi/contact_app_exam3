@@ -1,6 +1,6 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: %i[ show edit update destroy ]
-  skip_before_action :login_required, only: [:index, :new, :create]
+  skip_before_action :login_required
   # GET /feeds or /feeds.json
   def index
     @feeds = Feed.all
@@ -13,6 +13,7 @@ class FeedsController < ApplicationController
   # GET /feeds/new
   def new
     @feed = Feed.new
+    @feed.id =current_user.id 
   end
 
   # GET /feeds/1/edit
@@ -21,12 +22,11 @@ class FeedsController < ApplicationController
 
   # POST /feeds or /feeds.json
   def create
-    
     @feed = Feed.new(feed_params)
-    binding.pry
+    @feed.id = current_user.id
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: "Feed was successfully created." }
+        format.html { redirect_to @feed, notice: "写真が登録されました" }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class FeedsController < ApplicationController
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: "Feed was successfully updated." }
+        format.html { redirect_to @feed, notice: "写真が変更されました." }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class FeedsController < ApplicationController
   def destroy
     @feed.destroy
     respond_to do |format|
-      format.html { redirect_to feeds_url, notice: "Feed was successfully destroyed." }
+      format.html { redirect_to feeds_url, notice: "写真が削除されました." }
       format.json { head :no_content }
     end
   end

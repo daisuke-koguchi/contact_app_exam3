@@ -2,7 +2,6 @@
   <% if feed.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
-
       <ul>
         <% feed.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,12 +9,12 @@
       </ul>
     </div>
   <% end %>
-
+  <p>「ファイル選択ボタン」を押して写真を選択してください。</p>
+  <p>次に、「登録する」ボタンを押して登録してください。</p>
   <div class="field">
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
